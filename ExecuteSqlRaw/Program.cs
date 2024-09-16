@@ -15,9 +15,12 @@ namespace ExecuteSqlRaw
             var connectionString = new ConfigurationBuilder()
                 .AddJsonFile("appSettings.json")
                 .Build();
-            var connectionToDB = new SqlConnection(connectionString.GetSection("constr").Value);
 
-            var selectStatment = "select * from Wallets";
+
+
+            SqlConnection ? connectionToDB = new SqlConnection(connectionString.GetSection("constr").Value);
+
+            var selectStatment = "SELECT * FROM WALLETS";
 
             SqlCommand command = new SqlCommand(selectStatment, connectionToDB);    
 
@@ -38,7 +41,7 @@ namespace ExecuteSqlRaw
                 {
                     Id = reader.GetInt32("Id"),
                     Holder = reader.GetString("Holder"),
-                    Balance = reader.GetDecimal("Balance")
+                    Balance = reader.GetDecimal("Balance"),
                 };
 
                 Console.WriteLine(wallet);
